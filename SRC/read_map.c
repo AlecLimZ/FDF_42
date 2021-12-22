@@ -6,11 +6,30 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:11:15 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/17 15:26:17 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/22 19:09:57 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int	ft_wdcounter(char const *str, char c)
+{
+	int	i;
+	int	words;
+
+	words = 0;
+	i = 0;
+	while (str[i])
+	{
+		while (str[i] == c && str[i] != '\0')
+			i++;
+		if (str[i])
+			words++;
+		while (str[i] != c && str[i] != '\0')
+			i++;
+	}
+	return (words);
+}
 
 int	get_dots_from_line(char *line, t_dot **matrix_of_dots, int y)
 {

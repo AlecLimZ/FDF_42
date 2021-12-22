@@ -6,11 +6,11 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 09:26:19 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/17 15:04:04 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/22 19:11:14 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "SRC/fdf.h"
 
 void	set_default(t_dot *param)
 {
@@ -24,7 +24,7 @@ void	set_default(t_dot *param)
 	param->shift_y = param->win_y / 3;
 	param->mlx_ptr = mlx_init();
 	param->win_ptr =\
-	mkx_new_window(param->mlx_ptr, param->win_x, param->win_y, "FDF");
+	mlx_new_window(param->mlx_ptr, param->win_x, param->win_y, "FDF");
 }
 
 int	main(int argc, char **argv)

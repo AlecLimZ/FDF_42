@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:36 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/17 14:59:53 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/22 18:19:56 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FDF_H
 
 # ifndef PRM
-#  define PRM
+#  define PRM matrix[0][0]
 # endif
 
 # include "../mlx_mms_20191025/mlx.h"
@@ -26,6 +26,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>
+# define MAX(A, B)(A > B ? A : B)
 
 typedef struct s_dot
 {
@@ -54,5 +55,6 @@ void	set_param(t_dot *a, t_dot *b, t_dot *param);
 void	print_menu(t_dot param);
 void	ft_error(char *msg);
 void	new_window(int key, t_dot **matrix);
+int		ft_wdcounter(char const *str, char c);
 
 #endif
