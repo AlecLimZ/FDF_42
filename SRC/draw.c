@@ -53,6 +53,7 @@ void	draw(t_dot **matrix)
 		x = 0;
 		while (1)
 		{
+		//	printf("x:%d\n", x);
 			if (matrix[y + 1])
 				line(matrix[y][x], matrix[y + 1][x], &PRM);
 			if (!matrix[y][x].is_last)

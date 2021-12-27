@@ -11,7 +11,8 @@ all		: $(NAME)
 #Macos
 $(OBJ)	: $(SRC)
 		make bonus -C $(LIBPATH)
-		make -C mlx_mms_20191025
+#		make -C mlx_mms_20191025
+		make -C minilibx_macos
 		$(CC) -Wall -Werror -Wextra -Imlx -c $(SRC)
 		mv *.o SRC/
 
@@ -19,7 +20,7 @@ $(OBJC)	: $(CUR)
 		$(CC) -Wall -Werror -Wextra -Imlx -c $(CUR)
 
 $(NAME)	: $(OBJ) $(OBJC)
-		$(CC) -Lmlx_mms_20191025 -lmlx -framework OpenGL -framework AppKit $^ $(LIBPATH)libft.a -o $(NAME)
+		$(CC) -Lminilibx_macos -lmlx -framework OpenGL -framework AppKit $^ $(LIBPATH)libft.a -o $(NAME)
 
 #LINUX - ubuntu
 #$(OBJ)  : $(SRC)
@@ -31,12 +32,14 @@ $(NAME)	: $(OBJ) $(OBJC)
 clean	:
 		rm -rf $(OBJ) $(OBJC)
 		make clean -C $(LIBPATH)
-		make clean -C mlx_mms_20191025
+#		make clean -C mlx_mms_20191025
+		make clean -C minilibx_macos
 
 fclean	: clean
 		rm -rf $(NAME)
 		make fclean -C $(LIBPATH)
-		make clean -C mlx_mms_20191025
+#		make clean -C mlx_mms_20191025
+		make clean -C minilibx_macos
 
 re		: fclean all
 		make re -C $(LIBPATH)

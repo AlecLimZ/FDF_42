@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:11:15 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/22 19:09:57 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/23 16:32:10 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ t_dot	**memory_allocete(char	*file_name)
 		free(line);
 	}
 	free(line);
+	printf("y: %d\n", y);
 	new = (t_dot **)malloc(sizeof(t_dot *) * (++y + 1));
 	while (y > 0)
 		new[--y] = (t_dot *)malloc(sizeof(t_dot) * (x + 1));

@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:36 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/22 18:19:56 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/27 17:33:59 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # include "../mlx_mms_20191025/mlx.h"
 # include "../mlx_linux/mlx.h"
+# include "../minilibx_macos/mlx.h"
 # include "get_next_line.h"
 # include "libft/libft.h"
 # include <stdio.h>
