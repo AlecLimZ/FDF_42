@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:20:25 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/30 15:17:34 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/30 18:04:47 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ t_map	*map_init(void)
 	map->height = 0;
 	map->coords_arr = NULL;
 	map->colors_arr = NULL;
-	map->z_min = FT_INT_MAX;
-	map->z_max = FT_INT_MIN;
+	map->z_min = INT_MAX;
+	map->z_max = INT_MIN;
 	map->z_range = 0;
 	return (map);
 }
@@ -52,11 +52,17 @@ t_fdf	*fdf_init(t_map *map)
 t_camera	*camera_init(t_fdf *fdf)
 {
 	t_camera	*camera;
+	int			x;
+	int			y;
 
 	if (!(camera = (t_camera *)ft_memalloc(sizeof(t_camera))))
 		terminate(ERR_CAMERA_INIT);
-	camera->zoom = FT_MIN((WIDTH - MENU_WIDTH) / fdf->map->width / 2,
-			HEIGHT / fdf->map->height / 2);
+	x = (WIDTH - MENU_WIDTH) / fdf->map->width / 2;
+	y = HEIGHT / fdf->map->height / 2;
+	if (x < y)
+		camera->zoom = x;
+	else
+		camera->zoom = y;
 	camera->alpha = 0;
 	camera->beta = 0;
 	camera->gamma = 0;

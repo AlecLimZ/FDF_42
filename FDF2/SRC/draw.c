@@ -6,12 +6,22 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 18:29:48 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/30 15:05:31 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/30 17:53:27 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "color.h"
+
+int	ft_abs(int x, int y)
+{
+	int i;
+
+	i = x - y;
+	if (i < 0)
+		i = -i;
+	return (i);
+}
 
 static void	put_pixel(t_fdf *fdf, int x, int y, int color)
 {
@@ -33,8 +43,8 @@ static void	draw_line(t_point f, t_point s, t_fdf *fdf)
 	t_point	cur;
 	int		error[2];
 
-	delta.x = FT_ABS(s.x - f.x);
-	delta.y = FT_ABS(s.y - f.y);
+	delta.x = ft_abs(s.x, f.x);
+	delta.y = ft_abs(s.y, f.y);
 	sign.x = f.x < s.x ? 1 : -1;
 	sign.y = f.y < s.y ? 1 : -1;
 	error[0] = delta.x - delta.y;

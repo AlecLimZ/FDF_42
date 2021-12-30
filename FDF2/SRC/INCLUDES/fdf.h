@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:36 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/30 17:05:47 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/30 18:05:05 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,6 @@
 # define WIDTH 1920
 # define MENU_WIDTH 250
 
-# define FT_MIN(A, B) (((A) < (B)) ? (A) : (B))
-# define FT_MAX(A, B) (((A) < (B)) ? (A) : (B))
-
-# define FT_ABS(X) (((X) < 0) ? (-(X)) : (X))
-
-# define FT_UINT_MAX ((unsigned)(~0L))
-# define FT_INT_MAX ((int)(FT_UINT_MAX >> 1))
-# define FT_INT_MIN ((int)(~FT_INT_MAX))
-
 # include "../../minilibx_macos/mlx.h"
 # include "../libft/libft.h"
 # include "get_next_line.h"
@@ -35,6 +26,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <math.h>
+# include <limits.h>
 
 typedef enum s_bool
 {
