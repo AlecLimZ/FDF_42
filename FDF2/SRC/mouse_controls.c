@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 19:05:29 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/28 19:11:22 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/30 15:34:47 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	mouse_press(int button, int x, int y, void *param)
 {
-	t_fdf *fdf;
+	t_fdf	*fdf;
 
 	(void)x;
 	(void)y;
@@ -29,7 +29,7 @@ int	mouse_press(int button, int x, int y, void *param)
 
 int	mouse_release(int button, int x, int y, void *param)
 {
-	t_fdf *fdf;
+	t_fdf	*fdf;
 
 	(void)x;
 	(void)y;

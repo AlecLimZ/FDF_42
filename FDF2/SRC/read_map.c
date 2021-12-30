@@ -6,12 +6,21 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 16:52:23 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/28 17:06:30 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/30 17:01:36 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "error_message.h"
+
+void	ft_strdel(char **as)
+{
+	if (as && *as)
+	{
+		free(*as);
+		*as = NULL;
+	}
+}
 
 static void	free_strsplit_arr(char **arr)
 {
@@ -23,7 +32,7 @@ static void	free_strsplit_arr(char **arr)
 	free(arr);
 }
 
-static t_coord_val	*new_cooord(char *s)
+static t_coord_val	*new_coord(char *s)
 {
 	t_coord_val	*coord;
 	char		**parts;
@@ -67,7 +76,7 @@ int	read_map(const int fd, t_coord_val **coords_stack, t_map *map)
 
 	while ((result = get_next_line(fd, &line)) == 1)
 	{
-		if (!(coords_line = ft_strsplit(line, ' ')))
+		if (!(coords_line = ft_split(line, ' ')))
 			terminate(ERR_MAP_READING);
 		parse_line(coords_line, coords_stack, map);
 		free_strsplit_arr(coords_line);

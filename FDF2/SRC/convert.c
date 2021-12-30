@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 18:20:46 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/28 18:25:56 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/30 14:42:29 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	stack_to_arrays(t_coord_val **coords_stack, t_map *map)
 {
-	t_coord_val *coord;
+	t_coord_val	*coord;
 	ssize_t		i;
 	size_t		arr_size;
 

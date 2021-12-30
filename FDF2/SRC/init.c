@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:20:25 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/28 17:33:58 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/30 15:17:34 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ t_fdf	*fdf_init(t_map *map)
 		terminate(ERR_FDF_INIT);
 	if (!(fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT)))
 		terminate(ERR_FDF_INIT);
-	fdf->data_addr = mlx_get_data_addr(fdf->img, &(fdf->bits_per_pixel), &(fdf->size_line), &(fdf->endian));
+	fdf->data_addr = mlx_get_data_addr(fdf->img, &(fdf->bits_per_pixel),
+			&(fdf->size_line), &(fdf->endian));
 	fdf->map = map;
 	if (!(fdf->mouse = (t_mouse *)ft_memalloc(sizeof(t_mouse))))
 		terminate(ERR_FDF_INIT);
@@ -54,7 +55,8 @@ t_camera	*camera_init(t_fdf *fdf)
 
 	if (!(camera = (t_camera *)ft_memalloc(sizeof(t_camera))))
 		terminate(ERR_CAMERA_INIT);
-	camera->zoom = FT_MIN((WIDTH - MENU_WIDTH) / fdf->map->width / 2, HEIGHT / fdf->map->height / 2);
+	camera->zoom = FT_MIN((WIDTH - MENU_WIDTH) / fdf->map->width / 2,
+			HEIGHT / fdf->map->height / 2);
 	camera->alpha = 0;
 	camera->beta = 0;
 	camera->gamma = 0;

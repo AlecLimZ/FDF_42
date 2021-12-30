@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 09:26:19 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/28 16:36:27 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/30 17:10:32 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	t_fdf		*fdf;
 
 	errno = 0;
-	coods_stack = NULL;
+	coords_stack = NULL;
 	if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);

@@ -6,12 +6,12 @@
 #    By: jacklearn <marvin@42.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/10 10:20:44 by jacklearn         #+#    #+#              #
-#    Updated: 2021/05/20 13:45:30 by leng-chu         ###   ########.fr        #
+#    Updated: 2021/12/30 16:50:58 by leng-chu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
-SRC		=	ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strlcat.c \
+SRC		=	ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strlcat.c ft_memalloc.c \
 			ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c \
 			ft_memmove.c ft_memchr.c ft_memcmp.c ft_strchr.c \
 			ft_strrchr.c ft_strnstr.c ft_atoi.c ft_isalpha.c ft_isdigit.c \

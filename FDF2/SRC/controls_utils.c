@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:43:05 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/28 17:58:40 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/30 14:39:52 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 
 void	zoom(int key, t_fdf *fdf)
 {
-	if (key == NUM_PAD_PLUS || key == MAIN_PAD_PLUS || key == MOUSE_SCROLL_UP)
+	if (key == NUM_PAD_PLUS
+		|| key == MAIN_PAD_PLUS
+		|| key == MOUSE_SCROLL_UP)
 		fdf->camera->zoom++;
-	else if (key == NUM_PAD_MINUS || key == MAIN_PAD_MINUS || key == MOUSE_SCROLL_DOWN)
+	else if (key == NUM_PAD_MINUS
+		|| key == MAIN_PAD_MINUS
+		|| key == MOUSE_SCROLL_DOWN)
 		fdf->camera->zoom--;
 	if (fdf->camera->zoom < 1)
 		fdf->camera->zoom = 1;
@@ -47,9 +51,11 @@ void	rotate(int key, t_fdf *fdf)
 		fdf->camera->beta -= 0.05;
 	else if (key == NUM_PAD_6 || key == MAIN_PAD_6)
 		fdf->camera->beta += 0.05;
-	else if (key == NUM_PAD_1 || key == MAIN_PAD_1 || key == NUM_PAD_3 || key == MAIN_PAD_3)
+	else if (key == NUM_PAD_1 || key == MAIN_PAD_1
+		|| key == NUM_PAD_3 || key == MAIN_PAD_3)
 		fdf->camera->gamma += 0.05;
-	else if (key == NUM_PAD_7 || key == MAIN_PAD_7 || key == NUM_PAD_9 || key == MAIN_PAD_9)
+	else if (key == NUM_PAD_7 || key == MAIN_PAD_7
+		|| key == NUM_PAD_9 || key == MAIN_PAD_9)
 		fdf->camera->gamma -= 0.05;
 	draw(fdf->map, fdf);
 }

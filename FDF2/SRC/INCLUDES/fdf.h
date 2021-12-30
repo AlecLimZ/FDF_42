@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:36 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/28 16:27:12 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/30 17:05:47 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,19 @@
 # define WIDTH 1920
 # define MENU_WIDTH 250
 
+# define FT_MIN(A, B) (((A) < (B)) ? (A) : (B))
+# define FT_MAX(A, B) (((A) < (B)) ? (A) : (B))
+
+# define FT_ABS(X) (((X) < 0) ? (-(X)) : (X))
+
+# define FT_UINT_MAX ((unsigned)(~0L))
+# define FT_INT_MAX ((int)(FT_UINT_MAX >> 1))
+# define FT_INT_MIN ((int)(~FT_INT_MAX))
+
 # include "../../minilibx_macos/mlx.h"
+# include "../libft/libft.h"
+# include "get_next_line.h"
+# include <stdio.h>
 # include <errno.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -111,7 +123,7 @@ int			get_color(t_point current, t_point start,
 				t_point end, t_point delta);
 t_point		project(t_point p, t_fdf *fdf);
 void		print_menu(t_fdf *fdf);
-int			close(void *param);
+int			ft_close(void *param);
 void		setup_controls(t_fdf *fdf);
 int			key_press(int key, void *param);
 int			mouse_press(int button, int x, int y, void *param);
@@ -123,10 +135,11 @@ void		rotate(int key, t_fdf *fdf);
 void		flatten(int key, t_fdf *fdf);
 void		change_projection(int key, t_fdf *fdf);
 t_bool		ft_isnumber(char *str, int base);
-int			ft_atoi_base(char *str, int base);
+int			ft_atoi_base(const char *str, int base);
 double		percent(int start, int end, int current);
 void		terminate(char *s);
 int			get_index(int x, int y, int width);
 t_point		new_point(int x, int y, t_map *map);
+void		ft_strdel(char **as);
 
 #endif

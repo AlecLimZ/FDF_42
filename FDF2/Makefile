@@ -14,15 +14,15 @@ $(OBJ)	: $(SRC)
 		make bonus -C $(LIBPATH)
 #		make -C mlx_mms_20191025
 		make -C minilibx_macos
-		$(CC) -Wall -Werror -Wextra -Imlx -c $(SRC)
+		$(CC) -Wall -Werror -Wextra -Imlx -c $(SRC) -I$(HEADERDIR)
 		mv *.o SRC/
 
 # Convert the main to .o on the main place
 $(OBJC)	: $(CUR)
-		$(CC) -Wall -Werror -Wextra -Imlx -c $(CUR)
+		$(CC) -Wall -Werror -Wextra -Imlx -c $(CUR) -I$(HEADERDIR)
 
 $(NAME)	: $(OBJ) $(OBJC)
-		$(CC) -Lminilibx_macos -lmlx -framework OpenGL -framework AppKit $^ $(LIBPATH)libft.a -I$(HEADERDIR) -o $(NAME)
+		$(CC) -Lminilibx_macos -lmlx -framework OpenGL -framework AppKit $^ $(LIBPATH)libft.a -o $(NAME)
 
 #LINUX - ubuntu
 #$(OBJ)  : $(SRC)

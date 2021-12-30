@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 18:29:48 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/28 18:43:35 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/30 15:05:31 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	put_pixel(t_fdf *fdf, int x, int y, int color)
 
 	if (x >= MENU_WIDTH && x < WIDTH && y >= 0 && y < HEIGHT)
 	{
-		i = (x * fdf->bits_per_pixel / 8) + (y < HEIGHT);
+		i = (x * fdf->bits_per_pixel / 8) + (y * fdf->size_line);
 		fdf->data_addr[i] = color;
 		fdf->data_addr[++i] = color >> 8;
 		fdf->data_addr[++i] = color >> 16;
@@ -30,8 +30,8 @@ static void	draw_line(t_point f, t_point s, t_fdf *fdf)
 {
 	t_point	delta;
 	t_point	sign;
-	t_point cur;
-	int	error[2];
+	t_point	cur;
+	int		error[2];
 
 	delta.x = FT_ABS(s.x - f.x);
 	delta.y = FT_ABS(s.y - f.y);
@@ -83,9 +83,11 @@ void	draw(t_map *map, t_fdf *fdf)
 		while (x < map->width)
 		{
 			if (x != fdf->map->width - 1)
-				draw_line(project(new_point(x, y, map), fdf), project(new_point(x + 1, y, map), fdf), fdf);
+				draw_line(project(new_point(x, y, map), fdf),
+					project(new_point(x + 1, y, map), fdf), fdf);
 			if (y != fdf->map->height - 1)
-				draw_line(project(new_point(x, y, map), fdf), project(new_point(x, y + 1, map), fdf), fdf);
+				draw_line(project(new_point(x, y, map), fdf),
+					project(new_point(x, y + 1, map), fdf), fdf);
 			x++;
 		}
 		y++;
