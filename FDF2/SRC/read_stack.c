@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:06:49 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/30 17:07:50 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/31 16:36:23 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	push(t_coord_val **coords_stack, t_coord_val *new)
 	}
 }
 
-t_coord_val *pop(t_coord_val **coords_stack)
+t_coord_val	*pop(t_coord_val **coords_stack)
 {
-	t_coord_val *top;
+	t_coord_val	*top;
 
 	top = NULL;
 	if (coords_stack && *coords_stack)

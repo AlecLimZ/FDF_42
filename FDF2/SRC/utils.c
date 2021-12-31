@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 13:46:29 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/30 17:07:21 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/31 16:38:06 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 int	ft_isspace(int c)
 {
-	return (c == '\t'
-			|| c == '\n'
-			|| c == '\v'
-			|| c == '\f'
-			|| c == '\r'
-			|| c == ' ');
+	return (c == '\t' || c == '\n' || c == '\v'
+		|| c == '\f' || c == '\r' || c == ' ');
 }
 
 static int	ft_isdigit_base(char c, int base)
@@ -102,7 +98,12 @@ int	ft_atoi_base(const char *str, int base)
 	else if (base == 8)
 		i++;
 	else if (base == 10 && (str[i] == '-' || str[i] == '+'))
-		sign = (str[i++] == '-') ? -1 : 1;
+	{
+		if (str[i++] == '-')
+			sign = -1;
+		else
+			sign = 1;
+	}
 	while (ft_isdigit_base(str[i], base) >= 0)
 		result = result * base + ft_isdigit_base(str[i++], base);
 	return ((int)(result * sign));

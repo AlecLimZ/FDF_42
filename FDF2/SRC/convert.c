@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 18:20:46 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/30 14:42:29 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/31 15:58:48 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ void	stack_to_arrays(t_coord_val **coords_stack, t_map *map)
 	size_t		arr_size;
 
 	arr_size = map->width * map->height * sizeof(int);
-	if (!(map->coords_arr = (int *)ft_memalloc(arr_size)))
-		terminate(ERR_CONV_TO_ARR);
-	if (!(map->colors_arr = (int *)ft_memalloc(arr_size)))
+	map->coords_arr = (int *)ft_memalloc(arr_size);
+	map->colors_arr = (int *)ft_memalloc(arr_size);
+	if (!map->coords_arr || !map->colors_arr)
 		terminate(ERR_CONV_TO_ARR);
 	i = map->width * map->height - 1;
-	while ((coord = pop(coords_stack)) && i >= 0)
+	coord = pop(coords_stack);
+	while (coord && i >= 0)
 	{
 		map->coords_arr[i] = coord->z;
 		map->colors_arr[i] = coord->color;
@@ -35,6 +36,8 @@ void	stack_to_arrays(t_coord_val **coords_stack, t_map *map)
 			map->z_min = coord->z;
 		i--;
 		free(coord);
+		coord = pop(coords_stack);
 	}
+	free(coord);
 	map->z_range = map->z_max - map->z_min;
 }

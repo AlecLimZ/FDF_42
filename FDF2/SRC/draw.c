@@ -6,22 +6,12 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 18:29:48 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/30 17:53:27 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/31 16:18:09 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "color.h"
-
-int	ft_abs(int x, int y)
-{
-	int i;
-
-	i = x - y;
-	if (i < 0)
-		i = -i;
-	return (i);
-}
 
 static void	put_pixel(t_fdf *fdf, int x, int y, int color)
 {
@@ -36,6 +26,28 @@ static void	put_pixel(t_fdf *fdf, int x, int y, int color)
 	}
 }
 
+static void	ft_assign(t_point *delta, t_point *sign, t_point f, t_point s)
+{
+	int	num;
+
+	num = s.x - f.x;
+	if (num < 0)
+		num = -num;
+	delta->x = num;
+	num = s.y - f.y;
+	if (num < 0)
+		num = -num;
+	delta->y = num;
+	if (f.x < s.x)
+		sign->x = 1;
+	else
+		sign->x = -1;
+	if (f.y < s.y)
+		sign->y = 1;
+	else
+		sign->y = -1;
+}
+
 static void	draw_line(t_point f, t_point s, t_fdf *fdf)
 {
 	t_point	delta;
@@ -43,16 +55,14 @@ static void	draw_line(t_point f, t_point s, t_fdf *fdf)
 	t_point	cur;
 	int		error[2];
 
-	delta.x = ft_abs(s.x, f.x);
-	delta.y = ft_abs(s.y, f.y);
-	sign.x = f.x < s.x ? 1 : -1;
-	sign.y = f.y < s.y ? 1 : -1;
+	ft_assign(&delta, &sign, f, s);
 	error[0] = delta.x - delta.y;
 	cur = f;
 	while (cur.x != s.x || cur.y != s.y)
 	{
 		put_pixel(fdf, cur.x, cur.y, get_color(cur, f, s, delta));
-		if ((error[1] = error[0] * 2) > -delta.y)
+		error[1] = error[0] * 2;
+		if (error[1] > -delta.y)
 		{
 			error[0] -= delta.y;
 			cur.x += sign.x;
@@ -75,7 +85,10 @@ static void	draw_background(t_fdf *fdf)
 	i = 0;
 	while (i < HEIGHT * WIDTH)
 	{
-		image[i] = (i % WIDTH < MENU_WIDTH) ? MENU_BACKGROUND : BACKGROUND;
+		if (i % WIDTH < MENU_WIDTH)
+			image[i] = MENU_BACKGROUND;
+		else
+			image[i] = BACKGROUND;
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 09:26:19 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/30 17:41:28 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/31 16:01:28 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int	main(int argc, char **argv)
 		if (read_map(fd, &coords_stack, map) == -1)
 			terminate(ERR_MAP_READING);
 		fdf = fdf_init(map);
-		printf("max: %d\n", map->z_max);
-		printf("min: %d\n", map->z_min);
 		stack_to_arrays(&coords_stack, map);
 		fdf->camera = camera_init(fdf);
 		draw(fdf->map, fdf);

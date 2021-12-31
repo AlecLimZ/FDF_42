@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 16:52:23 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/30 17:01:36 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/31 16:34:23 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,24 @@ static t_coord_val	*new_coord(char *s)
 	t_coord_val	*coord;
 	char		**parts;
 
-	if (!(coord = (t_coord_val *)ft_memalloc(sizeof(t_coord_val))))
-		terminate(ERR_MAP_READING);
-	if (!(parts = ft_split(s, ',')))
-		terminate(ERR_MAP_READING);
-	if (!ft_isnumber(parts[0], 10))
+	coord = (t_coord_val *)ft_memalloc(sizeof(t_coord_val));
+	parts = ft_split(s, ',');
+	if (!coord || !parts || !ft_isnumber(parts[0], 10))
 		terminate(ERR_MAP_READING);
 	if (parts[1] && !ft_isnumber(parts[1], 16))
 		terminate(ERR_MAP_READING);
 	coord->z = ft_atoi(parts[0]);
-	coord->color = parts[1] ? ft_atoi_base(parts[1], 16) : -1;
+	if (parts[1])
+		coord->color = ft_atoi_base(parts[1], 16);
+	else
+		coord->color = -1;
 	coord->next = NULL;
 	free_strsplit_arr(parts);
 	return (coord);
 }
 
-static void	parse_line(char **coords_line, t_coord_val **coords_stack, t_map *map)
+static void	parse_line(char **coords_line,
+		t_coord_val **coords_stack, t_map *map)
 {
 	int	width;
 
@@ -74,14 +76,17 @@ int	read_map(const int fd, t_coord_val **coords_stack, t_map *map)
 	int		result;
 	char	**coords_line;
 
-	while ((result = get_next_line(fd, &line)) == 1)
+	result = get_next_line(fd, &line);
+	while (result == 1)
 	{
-		if (!(coords_line = ft_split(line, ' ')))
+		coords_line = ft_split(line, ' ');
+		if (!coords_line)
 			terminate(ERR_MAP_READING);
 		parse_line(coords_line, coords_stack, map);
 		free_strsplit_arr(coords_line);
 		ft_strdel(&line);
 		map->height++;
+		result = get_next_line(fd, &line);
 	}
 	if (!(*coords_stack))
 		terminate(ERR_MAP);

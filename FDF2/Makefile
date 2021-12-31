@@ -1,6 +1,6 @@
 NAME		= fdf
 SRC			= SRC/*.c
-CUR			= fdf2.c
+CUR			= main.c
 OBJ			= $(SRC:%.c=%.o)
 OBJC		= $(CUR:%.c=%.o)
 CC			= gcc

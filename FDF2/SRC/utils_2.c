@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 14:06:46 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/30 16:20:45 by leng-chu         ###   ########.fr       */
+/*   Updated: 2021/12/31 16:45:33 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ double	percent(int start, int end, int current)
 
 	placement = current - start;
 	distance = end - start;
-	return ((distance == 0) ? 1.0 : (placement / distance));
+	if (distance == 0)
+		return (1.0);
+	return (placement / distance);
 }
 
 void	terminate(char *s)
@@ -45,6 +47,9 @@ t_point	new_point(int x, int y, t_map *map)
 	point.x = x;
 	point.y = y;
 	point.z = map->coords_arr[index];
-	point.color = (map->colors_arr[index] == -1) ? get_default_color(point.z, map) : map->colors_arr[index];
+	if (map->colors_arr[index] == -1)
+		point.color = get_default_color(point.z, map);
+	else
+		point.color = map->colors_arr[index];
 	return (point);
 }
