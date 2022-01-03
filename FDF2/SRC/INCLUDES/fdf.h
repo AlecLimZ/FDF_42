@@ -6,15 +6,15 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:36 by leng-chu          #+#    #+#             */
-/*   Updated: 2021/12/30 18:05:05 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/01/03 16:19:32 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define HEIGHT 1080
-# define WIDTH 1920
+# define HEIGHT 768
+# define WIDTH 1024
 # define MENU_WIDTH 250
 
 # include "../../minilibx_macos/mlx.h"

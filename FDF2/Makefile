@@ -24,24 +24,25 @@ $(OBJC)	: $(CUR)
 $(NAME)	: $(OBJ) $(OBJC)
 		$(CC) -Lminilibx_macos -lmlx -framework OpenGL -framework AppKit $^ $(LIBPATH)libft.a -o $(NAME)
 
-#LINUX - ubuntu
-#$(OBJ)  : $(SRC)
-#		$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -g -O3 -c $< -o $@
-
-#$(NAME) : $(OBJ)
-#		$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+linux :
+		make bonus -C $(LIBPATH)
+		make -C mlx_linux
+		$(CC) -Wall -Werror -Wextra -Imlx -c $(SRC) $(CUR) -I$(HEADERDIR)
+		mv *.o SRC/
+		$(CC) SRC/*.o $(LIBPATH)libft.a -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o fdf
 
 clean	:
 		rm -rf $(OBJ) $(OBJC)
 		make clean -C $(LIBPATH)
 #		make clean -C mlx_mms_20191025
 		make clean -C minilibx_macos
+		make clean -C mlx_linux
 
 fclean	: clean
 		rm -rf $(NAME)
 		make fclean -C $(LIBPATH)
 #		make clean -C mlx_mms_20191025
-		make clean -C minilibx_macos
+#		make clean -C minilibx_macos
 
 re		: fclean all
 		make re -C $(LIBPATH)
