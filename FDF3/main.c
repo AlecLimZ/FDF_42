@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 09:26:19 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/01/03 20:04:09 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/01/07 17:45:42 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	key_linux(int keycode, t_fdf *fdf)
 int	main(int argc, char **argv)
 {
 	int			fd;
-	t_map		*map;
+	t_map		map;
 	t_coord_val	*coords_stack;
 	t_fdf		*fdf;
 
@@ -71,18 +71,18 @@ int	main(int argc, char **argv)
 	{
 		fd = open(argv[1], O_RDONLY);
 		if (fd < 0)
-			terminate(ERR_MAP);
-		map = map_init();
-		if (read_map(fd, &coords_stack, map) == -1)
+			terminate("Map file does not exist");
+		map_init(&map);
+		if (read_map(fd, &coords_stack, &map) == -1)
 			terminate(ERR_MAP_READING);
-		fdf = fdf_init(map);
-		stack_to_arrays(&coords_stack, map);
+		fdf = fdf_init(&map);
+		stack_to_arrays(&coords_stack, &map);
 		fdf->camera = camera_init(fdf);
 		draw(fdf->map, fdf);
 		setup_controls(fdf);
 		mlx_key_hook(fdf->win, key_linux, fdf);
 		mlx_loop(fdf->mlx);
 	}
-	terminate(ERR_USAGE);
+	terminate("Incorrect command. Please use: ./fdf MAP");
 	return (0);
 }

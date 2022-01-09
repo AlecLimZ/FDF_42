@@ -6,7 +6,7 @@
 /*   By: leng-chu <leng-chu@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 20:08:47 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/01/06 20:23:51 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/01/08 20:57:22 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ static t_coord_val	*new_coord(char *s)
 
 	coord = (t_coord_val *)ft_memalloc(sizeof(t_coord_val));
 	parts = ft_split(s, ',');
-	if (!coord || !parts || !ft_isnumber(parts[0], 10))
+	if (!coord || !parts || !ft_isnumber(s, 10))
 		terminate(ERR_MAP_READING);
 	if (parts[1] && !ft_isnumber(parts[1], 16))
 		terminate(ERR_MAP_READING);
-	coord->z = ft_atoi(parts[0]);
+	coord->z = ft_atoi(s);
 	if (parts[1])
 		coord->color = ft_atoi_base(parts[1], 16);
 	else

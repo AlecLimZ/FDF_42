@@ -6,20 +6,15 @@
 /*   By: leng-chu <leng-chu@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 16:39:23 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/01/06 16:59:22 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/01/07 17:46:55 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "error_message.h"
 
-t_map	*map_init(void)
+void	map_init(t_map *map)
 {
-	t_map	*map;
-
-	map = (t_map *)ft_memalloc(sizeof(t_map));
-	if (!map)
-		terminate(ERR_MAP_INIT);
 	map->width = 0;
 	map->height = 0;
 	map->coords_arr = NULL;
@@ -27,7 +22,6 @@ t_map	*map_init(void)
 	map->z_min = INT_MAX;
 	map->z_max = INT_MIN;
 	map->z_range = 0;
-	return (map);
 }
 
 t_fdf	*fdf_init(t_map *map)

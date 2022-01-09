@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:53:36 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/01/03 16:19:32 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/01/07 17:43:16 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct s_fdf
 int			read_map(const int fd, t_coord_val **coords_Stack, t_map *map);
 void		push(t_coord_val **coords_stack, t_coord_val *new);
 t_coord_val	*pop(t_coord_val **coords_stack);
-t_map		*map_init(void);
+void		map_init(t_map *map);
 t_fdf		*fdf_init(t_map *map);
 t_camera	*camera_init(t_fdf *fdf);
 void		stack_to_arrays(t_coord_val **coords_stack, t_map *map);
